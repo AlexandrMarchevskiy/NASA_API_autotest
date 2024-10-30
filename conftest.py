@@ -1,3 +1,4 @@
+import allure
 import os
 
 import pytest
@@ -9,6 +10,7 @@ def make_request():
     api_key = os.getenv("NASA_API_KEY")
     url = "https://api.nasa.gov/planetary/apod"
 
+    @allure.step("Making request to NASA APOD API")
     def _make_request(params=None):
         base_params = {"api_key": api_key}
         if params:
