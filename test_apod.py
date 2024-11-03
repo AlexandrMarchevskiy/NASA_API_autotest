@@ -44,6 +44,6 @@ class TestsAPODDateField:
         start_date = datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=random.randrange(10, 30))
         end_date = (start_date + datetime.timedelta(days=random.randrange(7))).strftime('%Y-%m-%d')
         data = make_request(params={"start_date": start_date.strftime('%Y-%m-%d'), "end_date": end_date})
-        assert isinstance(data, list), "Expected a list of images, but received a different type"
+        assert isinstance(data, list), "Expected a list of images, but got a different type"
         assert len(data) > 1, "Expected at least 2 images, but received fewer"
-        assert data[0]["date"] != data[-1]["date"], "Expected unique dates in images, but received duplicates"
+        assert data[0]["date"] != data[-1]["date"], "Expected unique dates in images, but got duplicates"
